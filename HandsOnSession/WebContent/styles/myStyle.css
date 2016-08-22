@@ -1,0 +1,51 @@
+@CHARSET "ISO-8859-1";
+body{
+	background-color: grey;
+}
+
+table {
+	
+	border: 2px solid black;
+	border-collapse: collapse; 
+}
+
+td,tr,th{
+	border: 2px solid black;
+}
+
+#readSection{
+	float: left;
+	width: 20%;
+	margin: 1%;
+	height:100%;
+	background-color: aqua;
+
+
+}
+#writeSection{
+	margin: 1%;
+	height: 100%;
+	width: 40%;
+	background-color: lime;
+	
+}
+h1{
+	text-align: center;
+	width: 100%;
+	background-color: orange;
+}
+
+section{
+	display: inline-table;
+
+}
+#selectedValue{
+	margin: 2%;
+}
+.center{
+	text-align: center;
+}
+img{
+	height: 50px;
+	width: 50px;
+}

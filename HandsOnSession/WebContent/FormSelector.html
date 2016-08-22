@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Form Selector Example</title>
+<script type="text/javascript" src="Scripts/jquery.js"></script>
+<link href="styles/myStyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+$(function(){
+	$("#textbtn").click(function(){
+		$("#selectedValue").val(document.getElementById("usrName").value);
+	});
+	$("#selectbtn").click(function(){
+		$("#selectedValue").val(document.getElementById("cityName").value);
+	});
+	$("#radiobtn").click(function(){
+		var radioval = $("input[name='terms']:checked").val();
+		$("#selectedValue").val(radioval);
+	});
+	$("#unradiobtn").click(function(){
+		var radioval = $("input[name='terms']:not(:checked)").val();
+		$("#selectedValue").val(radioval);
+	});
+	$("#checkBoxbtn").click(function(){
+		var checkedValue = ""; 
+		$.each($("input[name='skillSet']:checked"),function(){
+			checkedValue += $(this).val()+", ";
+		});
+		
+		$("#selectedValue").val(checkedValue);
+
+	});
+	
+})();
+</script>
+</head>
+
+
+<body>
+<h1>Form Selector Example</h1>
+<section id="readSection">
+<em>Selected Value</em><input type="text" readonly="readonly" id="selectedValue">
+<table>
+<tr><td><button id="textbtn">Read Text</button></td></tr>
+<tr><td><button id="selectbtn">Read Select</button></td></tr>
+<tr><td><button id="radiobtn">Read Radio</button></td></tr>
+<tr><td><button id="checkBoxbtn">Read CheckBox</button></td></tr>
+<tr><td><button id="unradiobtn">Read UnChecked Radio</button></td></tr>
+</table>
+
+</section>
+
+<section id="writeSection">
+<div class="center">
+<img alt="hibernate" src="images/hibernate.png">
+<img alt="jquery" src="images/jquery.png">
+<img alt="spring" src="images/spring.png">
+</div>
+<form action="">
+
+<fieldset>
+<legend>New User</legend>
+
+<label>UserName :</label><input type="text" name="userName" id="usrName"><br>
+
+<label>Password :</label><input type="password" name="password" id="password"><br>
+
+<label>Skills : </label><label>Java</label><input type="checkbox" value="java" name="skillSet" id="javaCheck"><label>Dot.NET</label><input type="checkbox" name="skillSet" value="dot.NET" id="dotNetCheck"><br>
+
+<label>City : </label>
+<select id="cityName">
+	<option value="city1">City 1</option> 
+	<option value="city2">City 2</option>
+	<option value="city3">City 3</option>
+	<option value="city4">City 4</option>
+	
+</select><br>
+
+<label>Agree to Terms and Conditions : </label><label>Yes</label><input type="radio" value="Yes" id="agreed" name="terms"><label>No</label><input type="radio" value="No" id="disagreed" name="terms"><br>
+
+
+</fieldset>
+
+</form>
+</section>
+</body>
+</html>

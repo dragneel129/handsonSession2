@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>jQuery Ajax</title>
+<script type="text/javascript" src="Scripts/jquery.js"></script>
+<script type="text/javascript">
+	var options = {
+		type : "GET",
+		url : "http://services.groupkt.com/state/get/IND/all",
+		dataType: 'json',
+		success: function (resp, text){
+			var i;
+			var results = resp.RestResponse;
+			for(i = 0; results.result[i];i++){
+				$("#state").append("<option value='"+results.result[i].abbr+"'>"+results.result[i].name+"</option>");
+			
+			}
+				
+		}
+	
+	}
+	
+		var changeOptions ={
+				type:"GET",
+				url: "http://services.groupkt.com/state/get/IND/"+$("#state").val(),
+				dataType : 'json',
+				error: function (xhr, textStatus, errorThrown) {
+                    alert('An error occurred! ' + errorThrown);
+                    alert('text status! ' + textStatus);
+                },
+
+				success: function(resp,text){
+					
+					$("#state").change(function(){
+						var state=$("#state option:selected").val();
+						var cap = resp.RestResponse.capital;
+						console.log(resp.RestResponse);
+						$("#capital").val(resp.RestResponse.capital);
+					});
+					
+				}
+				
+		}
+
+
+
+$.ajax(options);
+$.ajax(changeOptions);
+	
+</script>
+</head>
+<body>
+<form action="">
+<fieldset>
+<legend>jQuery Ajax</legend>
+<select name="state" id="state"></select>
+<input type="text" name="capital" id="capital" readonly="readonly">
+</fieldset>
+</form>
+
+</body>
+</html>
